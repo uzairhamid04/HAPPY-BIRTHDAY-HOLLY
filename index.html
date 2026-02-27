@@ -1,43 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Happy Birthday ❤️</title>
+    <title>Happy Birthday Holly ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
     <style>
         body {
-            text-align: center;
-            font-family: Arial;
-            background: linear-gradient(to right, pink, lightblue);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #ff4e50, #fc913a, #f9d423, #ff6ec4);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
             color: white;
+            overflow: hidden;
+            text-align: center;
         }
+
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
         h1 {
-            font-size: 50px;
-            margin-top: 100px;
+            font-size: 55px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
         }
+
         p {
-            font-size: 24px;
+            font-size: 22px;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
         }
+
         button {
-            padding: 15px 30px;
+            margin-top: 30px;
+            padding: 15px 35px;
             font-size: 18px;
             border: none;
-            border-radius: 10px;
+            border-radius: 30px;
             background: white;
-            color: pink;
+            color: #ff4e50;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: #ff4e50;
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -10px;
+            font-size: 20px;
+            animation: floatUp 6s linear infinite;
+        }
+
+        @keyframes floatUp {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-100vh); opacity: 0; }
         }
     </style>
 </head>
+
 <body>
 
-    <h1>Happy Birthday !!! 🎉❤️</h1>
-    <p>NEXT MESSAGE </p>
+    <h1>Happy Birthday Holly 🎂💖</h1>
+    <p>You make my life brighter every single day ✨</p>
 
-    <button onclick="showMessage()">Click for a Surprise 💌</button>
+    <button onclick="surprise()">Click For Surprise 🎁</button>
 
     <script>
-        function showMessage() {
-            alert("GIFT IN HERE  💖");
+        function surprise() {
+            alert("I love you more than anything. Happy Birthday beautiful ❤️");
         }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💖";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = Math.random() * 20 + 15 + "px";
+            heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 300);
     </script>
 
 </body>
