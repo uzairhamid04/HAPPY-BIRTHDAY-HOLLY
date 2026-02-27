@@ -16,22 +16,20 @@
             align-items: center;
             font-family: 'Poppins', sans-serif;
 
-            /* HER SUNSET COLORS */
+            /* HER SUNSET COLORS (no yellow) */
             background: linear-gradient(-45deg, 
                 #7BAFD4,   /* dusty blue */
-                #FF9AA2,   /* pink */
-                #FFB347,   /* orange */
-                #C084FC,   /* purple */
-                #1E3A8A    /* deep blue */
+                #FF9AA2,   /* soft pink */
+                #FF8C42,   /* orange */
+                #C084FC    /* purple */
             );
 
             background-size: 400% 400%;
-            animation: gradientBG 18s ease infinite;
+            animation: gradientBG 16s ease infinite;
 
             color: white;
             overflow: hidden;
             text-align: center;
-            transition: background 2s ease;
         }
 
         @keyframes gradientBG {
@@ -41,10 +39,11 @@
         }
 
         h1 {
-            font-size: 45px;
+            font-size: 42px;
+            margin-bottom: 10px;
             opacity: 0;
             animation: fadeIn 2s forwards;
-            text-shadow: 0 0 20px rgba(255,255,255,0.8);
+            text-shadow: 0 0 15px rgba(255,255,255,0.7);
         }
 
         p {
@@ -53,26 +52,26 @@
             animation: fadeIn 3s forwards;
         }
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
         button {
-            margin-top: 30px;
+            margin-top: 35px;
             padding: 15px 35px;
             font-size: 18px;
             border: none;
             border-radius: 30px;
             background: white;
-            color: #1E3A8A;
+            color: #7BAFD4;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
         }
 
         button:hover {
             transform: scale(1.1);
-            background: #1E3A8A;
+            background: #7BAFD4;
             color: white;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
 
         .heart {
@@ -89,21 +88,15 @@
 
         .star {
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
+            width: 3px;
+            height: 3px;
             border-radius: 50%;
-            opacity: 0;
             animation: twinkle 2s infinite alternate;
         }
 
         @keyframes twinkle {
-            from {opacity: 0.2;}
+            from {opacity: 0.3;}
             to {opacity: 1;}
-        }
-
-        .night {
-            background: linear-gradient(to top, #0f172a, #1e3a8a);
         }
     </style>
 </head>
@@ -111,19 +104,13 @@
 <body>
 
     <h1>Happy Birthday Holly 🎂💖</h1>
-    <p>
-        The sky is bluer in real life...  
-        a beautiful dusty blue ☁️  
-        and sunsets are just as gorgeous —  
-        pink, orange, and purple 🌅✨
-    </p>
+    <p>Today is all about you ✨</p>
 
-    <button onclick="goToSurprise()">
-        Watch The Sunset Fade 🌙
+    <button onclick="window.location.href='surprise.html'">
+        Click For Your Surprise 🎁
     </button>
 
     <script>
-        // Floating Hearts
         function createHeart() {
             const heart = document.createElement("div");
             heart.classList.add("heart");
@@ -132,30 +119,28 @@
             heart.style.fontSize = Math.random() * 20 + 15 + "px";
             heart.style.animationDuration = Math.random() * 3 + 3 + "s";
             document.body.appendChild(heart);
+
             setTimeout(() => heart.remove(), 6000);
         }
+
         setInterval(createHeart, 400);
 
-        // Stars
+        // Multicolor stars
+        const starColors = ["#ffffff", "#FFB6E6", "#BFD7FF", "#E0BBFF"];
+
         function createStars() {
-            for (let i = 0; i < 80; i++) {
+            for (let i = 0; i < 60; i++) {
                 const star = document.createElement("div");
                 star.classList.add("star");
                 star.style.top = Math.random() * 100 + "vh";
                 star.style.left = Math.random() * 100 + "vw";
+                star.style.background = starColors[Math.floor(Math.random() * starColors.length)];
                 star.style.animationDuration = Math.random() * 2 + 1 + "s";
                 document.body.appendChild(star);
             }
         }
 
-        // Transition to Night + Redirect
-        function goToSurprise() {
-            document.body.classList.add("night");
-            createStars();
-            setTimeout(() => {
-                window.location.href = "surprise.html";
-            }, 2500);
-        }
+        createStars();
     </script>
 
 </body>
