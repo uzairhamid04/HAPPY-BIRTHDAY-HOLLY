@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <head>
     <title>For You ❤️</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,6 +75,32 @@
         window.open("YOUR GIFT.pdf?v=2", "_blank");
     }
 </script>
+<script>
+    window.onload = function() {
+        // Big first burst
+        confetti({
+            particleCount: 150,
+            spread: 90,
+            origin: { y: 0.6 }
+        });
 
+        // Side bursts for dramatic effect
+        setTimeout(() => {
+            confetti({
+                particleCount: 100,
+                angle: 60,
+                spread: 70,
+                origin: { x: 0 }
+            });
+
+            confetti({
+                particleCount: 100,
+                angle: 120,
+                spread: 70,
+                origin: { x: 1 }
+            });
+        }, 500);
+    };
+</script>
 </body>
 </html>
